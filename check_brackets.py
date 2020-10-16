@@ -1,16 +1,11 @@
 # python3
 
-from collections import namedtuple
-
-Bracket = namedtuple("Bracket", ["char", "position"])
-
-
-def are_matching(left, right):
-    return (left + right) in ["()", "[]", "{}"]
-
+import queue
 
 def find_mismatch(text):
     opening_brackets_stack = []
+    opens = queue.SimpleQueue()
+    closes = queue.LifoQueue()
     for i, next in enumerate(text):
         if next in "([{":
             # Process opening bracket, write your code here
