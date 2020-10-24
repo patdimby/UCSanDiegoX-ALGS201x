@@ -58,8 +58,7 @@ class TreeNode(object):
 class BinarySearchTree(object):
     
     """
-    Constructor with vaue we are going  to insert in tree with assigning
-    left and right child with default None 
+    Constructor with vaue we are going  to insert in tree with assigning  left and right child with default None 
     """
     
     def __init__(self, data):
@@ -68,16 +67,14 @@ class BinarySearchTree(object):
         self.right = None
         
     """
-    If the data we are inserting already present in tree it will not add it 
-    to avoid the duplicate values   """
+    If the data we are inserting already present in tree it will not add it to avoid the duplicate values   """
         
     def Add_Node(self, data):
         if data == self.data:
             return # node already exist
 
         """
-        If the data we are inserting is less  than the value of the current node, then
-        data will insert in Left node
+        If the data we are inserting is less  than the value of the current node, then data will insert in Left node
         """
         
         if data < self.data:
@@ -87,8 +84,7 @@ class BinarySearchTree(object):
                 self.left = BinarySearchTree(data)
          
             """
-            If the data we are inserting is greater  than the value of the current node, then
-            data will insert in Right node
+            If the data we are inserting is greater  than the value of the current node, then  data will insert in Right node
             """
             
         else:
@@ -100,17 +96,12 @@ class BinarySearchTree(object):
 
     def Find_Node(self, val):
         
-        """
-        If current node is equal to  data we are finding return true
-        """
+        """    If current node is equal to  data we are finding return true   """
         
         if self.data == val:
             return True
         
-        """
-        If current node is lesser than data we are finding we have search 
-        in Left child node
-        """
+        """   If current node is lesser than data we are finding we have search in left child node      """
 
         if val < self.data:
             if self.left:
@@ -119,9 +110,7 @@ class BinarySearchTree(object):
                 return False
         
         """
-        If current node is Greater than data we are finding we have search 
-        in Right child node
-        """
+        If current node is Greater than data we are finding we have search in right child node    """
 
         if val > self.data:
             if self.right:
@@ -163,10 +152,8 @@ class BinarySearchTree(object):
         return elements
     
     """
-    First it will visit Root node then
-    it will visit Left node and finally 
-    it will visit Right node  and display a
-    list in specific order
+    First it will visit Root node then   it will visit Left node and finally 
+    it will visit Right node  and display a  list in specific order
     """   
     
     def PreorderTraversal(self):
@@ -179,8 +166,7 @@ class BinarySearchTree(object):
         return elements
     
     """
-    This method will give
-    the Max value of tree
+    This method will give the maximum value of tree
     """ 
     
     def Find_Maximum_Node(self):
@@ -189,8 +175,7 @@ class BinarySearchTree(object):
         return self.right.Find_Maximum_Node()
     
     """
-    This method will give
-    the Min value of tree
+    This method will give the minimum value of tree
     """ 
     
     def Find_Minimum_Node(self):
@@ -208,8 +193,7 @@ class BinarySearchTree(object):
         return self.data + left_sum + right_sum
 
 """
-This method helps to build the tree
-whith the element we inserted in it
+This method helps to build the tree whith the element we inserted in it
 """
 
 def BuildTree(elements):
