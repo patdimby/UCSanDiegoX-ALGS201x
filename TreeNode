@@ -55,7 +55,7 @@ class TreeNode(object):
 			self.left.parent = self
 			
 
-class BinarySearchTree:
+class BinarySearchTree(object):
     
     """
     Constructor with vaue we are going  to insert in tree with assigning
