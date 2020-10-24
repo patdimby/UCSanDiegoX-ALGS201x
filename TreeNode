@@ -1,73 +1,21 @@
-#!/usr/bin/python
+#!/usr/bin/python3
 # -*- coding: utf-8 -*-
-# python 3
+
+import sys
+import threading
+
+sys.setrecursionlimit(10 ** 7)  # max depth of recursion
+threading.stack_size(2 ** 25)  # new thread will get stack of such size
 
 
-class TreeNode(object):
+def IsBinarySearchTree(tree):
 
-    def __init__(
-        self,
-        key,
-        value,
-        left=None,
-        right=None,
-        parent=None,
-        ):
-        self.key = key
-        self.payload = value
-        self.left = left
-        self.right = right
-        self.parent = parent
+  # Implement correct algorithm here
 
-    def hasRightChild(self):
-        return self.right is not None
-
-    def hasLeftChild(self):
-        return self.left is not None
-
-    def isRightChild(self):
-        return self.parent and self.parent.right == self
-
-    def isLefChild(self):
-        return self.parent and self.parent.left == self
-
-    def isRoot(self):
-        return not self.parent
-
-    def hasAnyChildren(self):
-        return hasRightChild or hasLeftChild
-
-    def hasBothChildre(self):
-        return hasRightChild and hasLeftChild
-
-    def isLeaf(self):
-        return not (self.right and self.left)
-
-    def replace(self, node):
-        self.key = node.key
-        self.payload = node.payload
-        self.left = node.left
-        self.right = node.right
-        if self.hasRightChild():
-            self.right.parent = self
-        if self.hasLeftChild():
-            self.left.parent = self
-
-    def replaceNodeData(
-        self,
-        key,
-        value,
-        lc,
-        rc,
-        ):
-        self.key = key
-        self.payload = value
-        self.left = lc
-        self.right = rc
-        if self.hasRightChild():
-            self.right.parent = self
-        if self.hasLeftChild():
-            self.left.parent = self
+    root = BuildTree(elements)
+    if root.InorderTree() == sorted(tree):
+        return True
+    return False
 
 
 class BinarySearchTree(object):
@@ -171,3 +119,18 @@ def BuildTree(elements):
         root.Add_Node(elements[i])
 
     return root
+
+
+def main():
+    nodes = int(sys.stdin.readline().strip())
+    tree = []
+    for i in range(nodes):
+        tree.append(list(map(int,
+                    sys.stdin.readline().strip().split())))
+    if IsBinarySearchTree(tree):
+        print ('CORRECT')
+    else:
+        print ('INCORRECT')
+
+
+threading.Thread(target=main).start()
