@@ -32,7 +32,7 @@ class TreeNode(object):
 		
 		
 	def isLeaf(self):
-		return not ( self.child and self.left)
+		return not ( self.right and self.left)
 		
 	def replace(self, node):
 		self.key = node.key
@@ -155,7 +155,7 @@ class BinarySearchTree:
         elements = []
         if self.left:
             elements += self.left.PostorderTraversal()
-        if self.Right_child:
+        if self.right:
             elements += self.right.PostorderTraversal()
 
         elements.append(self.data)
@@ -171,10 +171,10 @@ class BinarySearchTree:
     
     def PreorderTraversal(self):
         elements = [self.data]
-        if self.Left_child:
+        if self.left:
             elements += self.left.PreorderTraversal()
-        if self.Right_child:
-            elements += self.Right_child.PreorderTraversal()
+        if self.right:
+            elements += self.right.PreorderTraversal()
 
         return elements
     
@@ -202,9 +202,9 @@ class BinarySearchTree:
     This method will give the Total Sum value of tree
     """  
     
-    def calculate_Sum_Of_Nodes(self):
-        left_sum = self.Left_child.calculate_Sum_Of_Nodes() if self.Left_child else 0
-        right_sum = self.Right_child.calculate_Sum_Of_Nodes() if self.Right_child else 0
+    def calculateSumNodes(self):
+        left_sum = self.left.calculateSumNodes() if self.left else 0
+        right_sum = self.right.calculateSumNodes() if self.right else 0
         return self.data + left_sum + right_sum
 
 """
