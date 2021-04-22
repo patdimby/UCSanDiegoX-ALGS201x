@@ -5,12 +5,17 @@ from functools import lru_cache
 import numpy as np
 
 
+@lru_cache(maxsize=128)
 def sum_fibonacci(n):
-    c, a, b = 0, 0, 1
+    total = 0
+    if n <= 2:
+        total = total + n
+        return total
+    a, b = 0, 1
     for i in range(n):
         a, b = b, a + b
-        c += a
-    return c
+        total += a
+    return total
 
 
 @lru_cache(maxsize=128)
@@ -35,7 +40,7 @@ def array_fibonacci(n):
 fib_table = {0: 0, 1: 1, 2: 2}
 
 
-# Function that computes Fibonacci  numbers with lru_cache
+# Function that computes Fibonacci numbers with lru_cache
 @lru_cache(maxsize=128)
 def sum_array_fibonacci(n):
     if n in fib_table:
@@ -46,9 +51,8 @@ def sum_array_fibonacci(n):
 
 
 def fibonacci_sum_naive(p):
-    y = array_fibonacci(p)
+    y = sum_fibonacci(p)
     return int(str(y)[-1])
-
 
 if __name__ == '__main__':
     input = sys.stdin.read()
