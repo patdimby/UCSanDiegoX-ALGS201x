@@ -1,11 +1,13 @@
 import sys
+from functools import lru_cache
+
 ''' Input Format
 The first line of the input consists of the virus composition, V
 The second line of he input consists of the number of people, N
 Next N lines each consist of the blood composition of the ith person, Bi
 '''
 
-
+lru_cache(maxsize=None)
 def test(T, P):
     found = {}
     result = "NEGATIVE"
