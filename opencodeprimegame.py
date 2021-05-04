@@ -7,6 +7,20 @@ Next T lines each consists of two space-separated integers, L and R
 '''
 
 lru_cache(maxsize=None)
+
+
+def get_primes(L, n):
+    numbers = set(range(n, 1, -1))
+    primes = []
+    while numbers:
+        p = numbers.pop()
+        primes.append(p)
+        numbers.difference_update(set(range(p*2, n+1, p)))
+    return [p for p in primes if p >= L]
+
+lru_cache(maxsize=None)
+
+
 def setArrayPrime(L, R):
     primes = []
     for possiblePrime in range(2, R + 1):
@@ -40,7 +54,7 @@ def main():
             if (L < 2 or R < 2) or (L > 10**6 or R > 10**6):
                 print(-1)
             else:
-                arr = setArrayPrime(L, R)
+                arr = get_primes(L, R)
                 if len(arr) < 1:
                     print(-1)
                 else:
