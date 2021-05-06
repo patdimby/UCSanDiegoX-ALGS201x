@@ -1,3 +1,5 @@
+# python3
+
 import sys
 import time
 import multiprocessing
@@ -31,9 +33,8 @@ def fibonacci(n):
 
 def np_fib(n):
     matrice = np.array([[1, 1], [1, 0]])
-    x = np.linalg.matrix_power(matrice, n)
-    y = np.array([1, 0])
-    return x * y
+    x = np.linalg.matrix_power(matrice, n)    
+    return x
 
 
 def fib(n):
